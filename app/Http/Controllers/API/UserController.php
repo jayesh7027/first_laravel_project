@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-use Illuminate\Support\Facades\DB;
 use Crypt;
 
 class UserController extends Controller {
@@ -84,7 +83,6 @@ class UserController extends Controller {
     public function update(Request $request, User $user) {
         //check validation
         $validator = Validator::make($request->all(), [
-                    'name' => 'required',
                     'phone' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|digits_between:10,10',
         ]);
         if ($validator->fails()) {
